@@ -3,7 +3,6 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 public class Sale {
 
@@ -67,15 +66,9 @@ public class Sale {
 	}
 
 	public Double AveragePrice() {
-		
-		double sum=0;
-		if(seller=="logan") {
-			sum+=total;
-				
-		}
-		
-		return sum;
-		
+
+		return total / items;
+
 	}
 
 	@Override
@@ -97,8 +90,8 @@ public class Sale {
 
 	@Override
 	public String toString() {
-		return "Sale [month=" + month + ", year=" + year + ", items=" + items + ", seller=" + seller + ", total="
-				+ total + "]";
+		return "month=" + month + ", year=" + year + ", items=" + items + ", seller=" + seller + ", total=" + total
+				+ (String.format(", pm : %.2f", AveragePrice()));
 	}
 
 }
